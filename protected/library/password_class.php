@@ -26,6 +26,15 @@ class password extends feature {
 	 */
 	public static function hashBcrypt($password, $cost=10, $serverSideKey='')
 	{
+		$options = [
+			'cost' => $cost
+		];
+		$hash = password_hash($password, PASSWORD_BCRYPT, $options);
+		return $hash;
+	}
+
+	public static function hashBcryptBKP($password, $cost=10, $serverSideKey='')
+	{
 		if (!defined('CRYPT_BLOWFISH')) throw new Exception('The CRYPT_BLOWFISH algorithm is required (PHP 5.3).');
 		if ($cost < 4 || $cost > 31) throw new InvalidArgumentException('The cost factor must be a number between 4 and 31');
 	
@@ -64,6 +73,10 @@ class password extends feature {
 	 *   otherwise false.
 	 */
 	public static function verify($password, $existingHash, $serverSideKey='')
+	{
+		return password_verify($password,$existingHash);
+	}
+	public static function verifyBKP($password, $existingHash, $serverSideKey='')
 	{
 		if (!defined('CRYPT_BLOWFISH')) throw new Exception('The CRYPT_BLOWFISH algorithm is required (PHP 5.3).');
 	

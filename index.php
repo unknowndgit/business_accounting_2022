@@ -1,7 +1,8 @@
 <?php
 ini_set('dispaly_errors','1');
 error_reporting(E_ALL);
-session_save_path('/home/nexishos/tmp');
+// session_save_path('/home/nexishos/tmp');
+// session_save_path('/home/nexishos/tmp');
 ini_set('session.gc_probability', 1);
 session_start ();
 //Set in php.ini
@@ -26,7 +27,7 @@ if(SCRIPT_DIR_PATH==='/')
 define ( 'SITE_URL', $protocol . SITE_ROOT);
 else
 	define ( 'SITE_URL', $protocol . SITE_ROOT . SCRIPT_DIR_PATH );
-define ( "SITE_MODE", "debug12" );
+define ( "SITE_MODE", "debug123" );
 if (SITE_MODE == "debug") {
 	ini_set ( 'error_reporting', E_ALL );
 	ini_set ( 'display_errors', '1' );
